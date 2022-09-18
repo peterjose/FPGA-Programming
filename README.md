@@ -7,6 +7,8 @@ FPGA modules are implemented based on two boards:
 * Basys2
 * Artix7
 
+Display used for the test procedures is having a resolution of 1024*600. More technical details can be found at [link](https://www.elecrow.com/download/7inch_1024x600_Specifications.pdf)
+
 ## Example codes:
 * Matlab
   * Colour Graying: 3 channel image to a single channel image; [colour_graying.m](Matlab-ImageProcessing/colour_graying.m)

@@ -1,0 +1,55 @@
+##############################################################################
+# Board: Basys2
+# https://digilent.com/reference/programmable-logic/basys-2/start
+##############################################################################
+
+##############################################################################
+# SYSCLK INPUT
+##############################################################################
+NET "clk" LOC = "B8" |IOSTANDARD = LVCMOS33;
+NET "clk" TNM_NET = "sys_clk";
+
+TIMESPEC "TS_sys_clk" = PERIOD "sys_clk" 20.0 ns;
+
+
+##############################################################################
+# AUX
+##############################################################################
+#NET "LED(7)"	LOC = "G1"			|IOSTANDARD = LVCMOS25;
+#NET "LED(6)"	LOC = "P4"			|IOSTANDARD = LVCMOS25;
+#NET "LED(5)"	LOC = "N4"			|IOSTANDARD = LVCMOS25;
+#NET "LED(4)"	LOC = "N5"			|IOSTANDARD = LVCMOS25;
+#NET "LED(3)"	LOC = "P6"			|IOSTANDARD = LVCMOS25;
+#NET "LED(2)"	LOC = "P7"			|IOSTANDARD = LVCMOS25;
+#NET "LED(1)"	LOC = "M11"			|IOSTANDARD = LVCMOS25;
+#NET "LED(0)"	LOC = "M5"			|IOSTANDARD = LVCMOS25;
+#
+#NET "en"		LOC = "P11"			|IOSTANDARD = LVCMOS25;
+NET "reset"		LOC = "A7"			|IOSTANDARD = LVCMOS25;
+NET "push"	    LOC = "G12"			|IOSTANDARD = LVCMOS25;
+
+NET "SW(7)"	LOC = "N3"			|IOSTANDARD = LVCMOS25;
+NET "SW(6)"	LOC = "E2"			|IOSTANDARD = LVCMOS25;
+NET "SW(5)"	LOC = "F3"			|IOSTANDARD = LVCMOS25;
+NET "SW(4)"	LOC = "G3"			|IOSTANDARD = LVCMOS25;
+NET "SW(3)"	LOC = "B4"			|IOSTANDARD = LVCMOS25;
+NET "SW(2)"	LOC = "K3"			|IOSTANDARD = LVCMOS25;
+NET "SW(1)"	LOC = "L3"			|IOSTANDARD = LVCMOS25;
+NET "SW(0)"	LOC = "P11"			|IOSTANDARD = LVCMOS25;
+
+##############################################################################
+# 7-seg
+##############################################################################
+NET "an(0)" LOC = "F12"; # Bank = 1, Signal name = AN0
+NET "an(1)" LOC = "J12"; # Bank = 1, Signal name = AN1
+NET "an(2)" LOC = "M13"; # Bank = 1, Signal name = AN2
+NET "an(3)" LOC = "K14"; # Bank = 1, Signal name = AN3
+
+NET "seg<0>" LOC = "L14"; # Bank = 1, Signal name = CA
+NET "seg<1>" LOC = "H12"; # Bank = 1, Signal name = CB
+NET "seg<2>" LOC = "N14"; # Bank = 1, Signal name = CC
+NET "seg<3>" LOC = "N11"; # Bank = 2, Signal name = CD
+NET "seg<4>" LOC = "P12"; # Bank = 2, Signal name = CE
+NET "seg<5>" LOC = "L13"; # Bank = 1, Signal name = CF
+NET "seg<6>" LOC = "M12"; # Bank = 1, Signal name = CG
+NET "seg<7>" LOC = "N13"; # Bank = 1, Signal name = DP			

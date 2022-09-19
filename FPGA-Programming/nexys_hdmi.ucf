@@ -1,0 +1,107 @@
+##############################################################################
+# Board: Artix7
+# https://digilent.com/reference/programmable-logic/basys-2/start
+##############################################################################
+
+##############################################################################
+# SYSCLK INPUT
+##############################################################################
+NET "refclkin_100"        LOC = "R4" |IOSTANDARD = LVCMOS33;
+
+NET "refclkin_100" 			TNM_NET = "Sys_Clk";
+TIMESPEC "TS_Sys_Clk" = PERIOD "Sys_Clk" 10.000ns;
+
+NET "TMDS_IN_clk_p" TNM_NET = DVI_CLOCK0;
+TIMESPEC TS_DVI_CLOCK0 = PERIOD "DVI_CLOCK0" 49 MHz HIGH 50%; 
+
+#NET "refclkin_100" CLOCK_DEDICATED_ROUTE = BACKBONE;
+#PIN "*MMCME2_BASE_refclk.CLKIN1" CLOCK_DEDICATED_ROUTE = BACKBONE; 
+##############################################################################
+# VOLTAGE ADJUST
+##############################################################################
+#NET "Vadj_EN"				LOC = "V14"		|IOSTANDARD = LVCMOS25;
+#NET "Set_Vadj[0]"		LOC = "AA13"		|IOSTANDARD = LVCMOS25;
+#NET "Set_Vadj[1]"		LOC = "AB17"		|IOSTANDARD = LVCMOS25;
+#NET "Volt_Chk"			LOC = "N19" 		|IOSTANDARD = LVCMOS25; 
+
+##############################################################################
+# LEDs
+##############################################################################
+NET led<0>			LOC = "T14"		|IOSTANDARD = LVCMOS25;
+NET led<1>			LOC = "T15"		|IOSTANDARD = LVCMOS25;
+NET led<2>			LOC = "T16"		|IOSTANDARD = LVCMOS25;
+NET led<3>			LOC = "U16"		|IOSTANDARD = LVCMOS25;
+NET led<4>			LOC = "V15"		|IOSTANDARD = LVCMOS25;
+NET led<5>			LOC = "W16"		|IOSTANDARD = LVCMOS25;
+NET led<6>			LOC = "W15"		|IOSTANDARD = LVCMOS25;
+NET led<7>			LOC = "Y13"		|IOSTANDARD = LVCMOS25;
+
+##############################################################################
+# DIP SWITCHES
+##############################################################################
+NET sw<0>			LOC = "E22"		|IOSTANDARD = LVCMOS12;
+NET sw<1>			LOC = "F21"		|IOSTANDARD = LVCMOS12;
+NET sw<2>			LOC = "G21"		|IOSTANDARD = LVCMOS12;
+NET sw<3>			LOC = "G22"		|IOSTANDARD = LVCMOS12;
+NET sw<4>			LOC = "H17"		|IOSTANDARD = LVCMOS12;
+NET sw<5>			LOC = "J16"		|IOSTANDARD = LVCMOS12;
+NET sw<6>			LOC = "K13"		|IOSTANDARD = LVCMOS12;
+NET sw<7>			LOC = "M17"		|IOSTANDARD = LVCMOS12;
+
+NET reset			LOC = "B22"		|IOSTANDARD = LVCMOS12;
+NET BTN_U			LOC = "F15"		|IOSTANDARD = LVCMOS12;
+
+#############################################################################
+# HDMI INPUT
+#############################################################################
+NET "TMDS_IN_clk_n"     	LOC = "W4" 	 	 |IOSTANDARD = TMDS_33;		#TMDS_CLK_N
+NET "TMDS_IN_clk_p"  		LOC = "V4" 	 	 |IOSTANDARD = TMDS_33;		#TMDS_CLK_P
+NET "TMDS_IN_data_n(0)"     LOC = "AA3"  	 |IOSTANDARD = TMDS_33;		#TMDS_RX0_N
+NET "TMDS_IN_data_p(0)"  	LOC = "Y3" 	 	 |IOSTANDARD = TMDS_33; 	#TMDS_RX0_P
+NET "TMDS_IN_data_n(1)"     LOC = "Y2" 	 	 |IOSTANDARD = TMDS_33; 	#TMDS_RX1_N
+NET "TMDS_IN_data_p(1)" 	LOC = "W2" 	 	 |IOSTANDARD = TMDS_33; 	#TMDS_RX1_P
+NET "TMDS_IN_data_n(2)"     LOC = "V2" 	     |IOSTANDARD = TMDS_33; 	#TMDS_RX2_N
+NET "TMDS_IN_data_p(2)"  	LOC = "U2" 	 	 |IOSTANDARD = TMDS_33; 	#TMDS_RX2_P
+NET "edid_scl_in"  			LOC = "Y4" 	 	 |IOSTANDARD = LVCMOS33;	#TMDS_SCL
+NET "edid_sda_io"  			LOC = "AB5" 	 |IOSTANDARD = LVCMOS33;	#TMDS_SDA
+
+NET "hdmi_rx_txen"  		LOC = "R3" 	 	 |IOSTANDARD = LVCMOS33;
+#NET "hdmi_rx_txen"  		LOC = "R3" 	 	 |IOSTANDARD = LVCMOS33;
+NET "hdmi_hpd"				LOC = "AB12" 	 |IOSTANDARD = LVCMOS25;
+
+#############################################################################
+# HDMI Output
+#############################################################################
+NET "TMDS_OUT_clk_n"     	LOC = "U1" 	 	 |IOSTANDARD = TMDS_33;		
+NET "TMDS_OUT_clk_p"  		LOC = "T1" 	 	 |IOSTANDARD = TMDS_33;		
+NET "TMDS_OUT_data_n(0)"    LOC = "Y1"  	 |IOSTANDARD = TMDS_33;		
+NET "TMDS_OUT_data_p(0)"  	LOC = "W1" 	 	 |IOSTANDARD = TMDS_33; 	
+NET "TMDS_OUT_data_n(1)"    LOC = "AB1" 	 |IOSTANDARD = TMDS_33; 	
+NET "TMDS_OUT_data_p(1)" 	LOC = "AA1" 	 |IOSTANDARD = TMDS_33; 	
+NET "TMDS_OUT_data_n(2)"    LOC = "AB2" 	 |IOSTANDARD = TMDS_33; 	
+NET "TMDS_OUT_data_p(2)"  	LOC = "AB3" 	 |IOSTANDARD = TMDS_33; 	
+
+NET "pwm_signal"  		LOC = "Y7" 	 	|IOSTANDARD = LVCMOS33;
+NET "reset_PWM"			LOC = "D22"		|IOSTANDARD = LVCMOS12;
+NET "sync_signal"		LOC = "C22"		|IOSTANDARD = LVCMOS12;
+
+#NET "PWM"  			LOC = "Y7" 	    |IOSTANDARD = LVCMOS33;
+
+NET "an<0>"  			LOC = "V9" 	    |IOSTANDARD = LVCMOS33;
+NET "an<1>"  			LOC = "V8" 	    |IOSTANDARD = LVCMOS33;
+NET "an<2>"  			LOC = "V7" 	    |IOSTANDARD = LVCMOS33;
+NET "an<3>"  			LOC = "W7" 	    |IOSTANDARD = LVCMOS33;
+
+// PMOD JC
+NET "kat<0>"  			LOC = "AB8" 	 |IOSTANDARD = LVCMOS33;
+NET "kat<1>"  			LOC = "AA8" 	 |IOSTANDARD = LVCMOS33;
+NET "kat<2>"  			LOC = "AA6" 	 |IOSTANDARD = LVCMOS33;
+NET "kat<3>"  			LOC = "R6" 	     |IOSTANDARD = LVCMOS33;
+NET "kat<4>"  			LOC = "T6" 	     |IOSTANDARD = LVCMOS33;
+NET "kat<5>"  			LOC = "AB6" 	 |IOSTANDARD = LVCMOS33;
+NET "kat<6>"  			LOC = "AB7" 	 |IOSTANDARD = LVCMOS33;
+#NET "kat<7>"  			LOC = "Y6" 	     |IOSTANDARD = LVCMOS33;
+#
+#NET "aled<2>"			LOC = "Y8"		 |IOSTANDARD = LVCMOS33;
+#NET "aled<1>"			LOC = "Y9"		 |IOSTANDARD = LVCMOS33;
+#NET "aled<0>"			LOC = "W9"		 |IOSTANDARD = LVCMOS33;

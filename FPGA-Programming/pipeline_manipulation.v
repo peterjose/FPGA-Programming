@@ -85,6 +85,10 @@ assign led[7] = b_from_decoder > 1 ? 1 : 0;
 reg [11:0] t_lsb = 12'd407;				// 12'd1629 for 60 Hz, 12'd407 for 240 Hz
 reg [9:0] pwm_value = ~0;
 
+// combinatory assignment
+// better design is to have a combinatory sequential design
+wire [9:0] max_value = r_from_decoder>g_from_decoder? (r_from_decoder>b_from_decoder?r_from_decoder:b_from_decoder):(g_from_decoder>b_from_decoder?g_from_decoder:b_from_decoder);
+
 // always block
 always @(posedge p_clock_from_decoder)
 begin
@@ -96,39 +100,13 @@ begin
 	// SW1 - GREEN
 	// SW2 - BLUE
 	// SW4 - To select the max value option
+
 	if(de_from_decoder && sw[3])
 	begin
 		// channel selection output based on the selected channel
-		if(r_from_decoder > g_from_decoder)
-		begin
-			if(r_from_decoder > b_from_decoder)
-			begin
-				r_from_decoder_out <= (sw[0] == 1) ? r_from_decoder: 0;
-				g_from_decoder_out <= (sw[1] == 1) ? r_from_decoder: 0;
-				b_from_decoder_out <= (sw[2] == 1) ? r_from_decoder: 0;
-			end
-			else
-			begin
-				r_from_decoder_out <= (sw[0] == 1) ? b_from_decoder: 0;
-				g_from_decoder_out <= (sw[1] == 1) ? b_from_decoder: 0;
-				b_from_decoder_out <= (sw[2] == 1) ? b_from_decoder: 0;
-			end
-		end
-		else
-		begin
-			if(g_from_decoder > b_from_decoder)
-			begin
-				r_from_decoder_out <= (sw[0] == 1) ? g_from_decoder: 0;
-				g_from_decoder_out <= (sw[1] == 1) ? g_from_decoder: 0;
-				b_from_decoder_out <= (sw[2] == 1) ? g_from_decoder: 0;
-			end
-			else
-			begin
-				r_from_decoder_out <= (sw[0] == 1) ? b_from_decoder: 0;
-				g_from_decoder_out <= (sw[1] == 1) ? b_from_decoder: 0;
-				b_from_decoder_out <= (sw[2] == 1) ? b_from_decoder: 0;
-			end
-		end
+		r_from_decoder_out <= (sw[0] == 1) ? max_value: 0;
+		g_from_decoder_out <= (sw[1] == 1) ? max_value: 0;
+		b_from_decoder_out <= (sw[2] == 1) ? max_value: 0;
 	end
 	else
 	begin

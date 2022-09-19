@@ -11,7 +11,7 @@
 // Tool versions: 	
 // Description: 	manipulate the image pipeline for gamma correction
 //
-// Dependencies: 	HDMI_IO_Interface, pwm_generator, seven_segment_display
+// Dependencies: 	HDMI_IO_Interface, pwm_generator, seven_segment_display, ROM
 //
 // Revision: 
 // Revision 0.01 - File Created
